@@ -9,25 +9,52 @@ namespace Trials
 {
     public class Card
     {
-        //since there is immutable list so all the instances will have same data
-        //would be also better to make the following lists as static , only one instance to exists
-        private ImmutableList<string> Suits;
-        private ImmutableList<string> Ranks;
+        public static ImmutableList<string> Suits { get; } = 
+            ImmutableList.Create("Clubs", "Spades", "Diamonds", "Hearts");
+        public static ImmutableList<string> Ranks { get; } = 
+            ImmutableList.Create("Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King");
+        public string Suit { get; }
+        public string Rank { get; }
 
-         //public static ImmutableList<string> Suits { get; } = 
-         //   ImmutableList.Create("Clubs", "Spades", "Diamonds", "Hearts");
-
-        public Card()
+        public Card(string suit, string rank)
         {
-            Suits = ImmutableList<string>.Empty;
-            //Suits = ImmutableList<string>.Empty.AddRange(new[] { "Clubs", "Spades", "Diamonds", "Hearts" });
-            //or more concise
-            Suits = ImmutableList.Create("Clubs", "Spades", "Diamonds", "Hearts");
-            Ranks = ImmutableList<string>.Empty.AddRange(new[] 
-            { "narf","Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King" });
-
+            Suit = suit;
+            Rank = rank;
         }
 
+    }
 
+    public class Deck
+        {
+            private List<Card> cards;
+            private Random random = new Random();
+
+            public Deck()
+            {
+                cards = new List<Card>();
+                //initializing 
+                foreach (var suit in Card.Suits)
+                {
+                    foreach (var rank in Card.Ranks)
+                    {
+                        cards.Add(new Card(suit, rank));
+                    }
+                }
+
+            }
+
+            public IList<Card> Shuffle()
+            {
+                for (int i = cards.Count - 1; i > 0; i--)
+                {
+                    int j = random.Next(i + 1);
+                    Card temp = cards[i];
+                    cards[i] = cards[j];
+                    cards[j] = temp;
+                }
+                return cards;
+            }
+        }
+             
     }
 }
