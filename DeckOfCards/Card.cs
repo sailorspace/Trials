@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Trials
+namespace Trials.DeckOfCards
 {
     public class Card
     {
@@ -57,4 +57,3 @@ namespace Trials
         }
              
     }
-}

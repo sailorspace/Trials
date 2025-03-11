@@ -2,8 +2,9 @@
 using BenchmarkDotNet.Running;
 using System;
 using System.Collections.Generic;
+using Trials.Fibonacci;
 
-namespace Trials
+namespace Trials.Benchmark
 {
     [SimpleJob]
     public class BenchmarkExecuter

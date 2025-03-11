@@ -16,7 +16,7 @@ namespace Trials
             /*int[] n = new int[d.Length + c.Length];
             Array.Copy(d, 0, n, 0, d.Length);
             Array.Copy(c, 0, n, d.Length, c.Length);*/
-            int[] n = [..d ,..c];
+            int[] n2 = [..d ,..c];
             int x = 3;
             int y = 7;
             Person person = new Person(x,y);
